@@ -12,10 +12,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
-      pushWithRep(context, UploadScreen());
+    Future.delayed(const Duration(seconds: 5), () {
+      pushWithRep(context, const UploadScreen());
     });
   }
 
