@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskatii/core/colors.dart';
 
 TextStyle getTitleStyle({double? fontSize, FontWeight? fontWight}) {
   return TextStyle(
@@ -9,7 +10,14 @@ TextStyle getTitleStyle({double? fontSize, FontWeight? fontWight}) {
 
 TextStyle getBodyStyle({double? fontSize, FontWeight? fontWight}) {
   return TextStyle(
-      fontSize: fontSize ?? 15,
+      fontSize: fontSize ?? 20,
       fontWeight: fontWight ?? FontWeight.normal,
       color: Colors.grey);
+}
+
+TextStyle getSmallStyle({double? fontSize, FontWeight? fontWight}) {
+  return TextStyle(
+      fontSize: fontSize ?? 12,
+      fontWeight: fontWight ?? FontWeight.bold,
+      color: AppColor().primary);
 }

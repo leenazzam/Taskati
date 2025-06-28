@@ -27,7 +27,9 @@ class coustomBotton extends StatelessWidget {
               backgroundColor: bgColor ?? const Color(0xff4E5AE7),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          onPressed: onPress(),
+          onPressed: () {
+            onPress();
+          },
           child: Text(
             txt,
             style: TextStyle(
