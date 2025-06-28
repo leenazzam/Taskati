@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taskatii/core/colors.dart';
 import 'package:taskatii/core/functions/navigations.dart';
@@ -17,7 +18,7 @@ class UploadScreen extends StatefulWidget {
 
 class _UploadScreenState extends State<UploadScreen> {
   String? path;
-  var nameController = new TextEditingController();
+  var nameController = TextEditingController();
   var nameFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,13 @@ class _UploadScreenState extends State<UploadScreen> {
       appBar: AppBar(
         actions: [
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               if (nameFormKey.currentState!.validate() && path != null) {
-                pushTO(context, HomeScreen());
+                var box = await Hive.openBox('user');
+                var userBox = Hive.box('user');
+                userBox.put('name', nameController.text);
+                userBox.put('image', path);
+                pushWithRep(context, const HomeScreen());
               } else if (path == null) {
                 showDialog(
                     context: context,
@@ -124,9 +129,9 @@ class _UploadScreenState extends State<UploadScreen> {
               child: TextFormField(
                   controller: nameController,
                   validator: (value) {
-                    if (value!.isEmpty)
+                    if (value!.isEmpty) {
                       return "Name is required";
-                    else if (!RegExp('^[A-Z][a-z]').hasMatch(value))
+                    } else if (!RegExp('^[A-Z][a-z]').hasMatch(value))
                       return "first letter must be capital!!";
                     else
                       return null;
