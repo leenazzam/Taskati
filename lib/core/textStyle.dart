@@ -1,23 +1,28 @@
+import 'package:date_picker_timeline/extra/color.dart';
 import 'package:flutter/material.dart';
 import 'package:taskatii/core/colors.dart';
 
-TextStyle getTitleStyle({double? fontSize, FontWeight? fontWight}) {
+TextStyle getTitleStyle(
+    {double? fontSize, FontWeight? fontWight, Color? txtcolor}) {
   return TextStyle(
     fontSize: fontSize ?? 30,
     fontWeight: fontWight ?? FontWeight.bold,
+    color: txtcolor ?? AppColor.primary,
   );
 }
 
-TextStyle getBodyStyle({double? fontSize, FontWeight? fontWight}) {
+TextStyle getBodyStyle(
+    {double? fontSize, FontWeight? fontWight, Color? txtcolor}) {
   return TextStyle(
       fontSize: fontSize ?? 20,
       fontWeight: fontWight ?? FontWeight.normal,
-      color: Colors.grey);
+      color: txtcolor ?? Colors.grey);
 }
 
-TextStyle getSmallStyle({double? fontSize, FontWeight? fontWight}) {
+TextStyle getSmallStyle(
+    {double? fontSize, FontWeight? fontWight, Color? txtcolor}) {
   return TextStyle(
       fontSize: fontSize ?? 12,
       fontWeight: fontWight ?? FontWeight.bold,
-      color: AppColor().primary);
+      color: txtcolor ?? AppColor.primary);
 }

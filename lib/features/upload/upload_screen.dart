@@ -28,10 +28,10 @@ class _UploadScreenState extends State<UploadScreen> {
           TextButton(
             onPressed: () async {
               if (nameFormKey.currentState!.validate() && path != null) {
-                var box = await Hive.openBox('user');
                 var userBox = Hive.box('user');
                 userBox.put('name', nameController.text);
                 userBox.put('image', path);
+                userBox.put('isUploaded', true);
                 pushWithRep(context, const HomeScreen());
               } else if (path == null) {
                 showDialog(
@@ -117,7 +117,7 @@ class _UploadScreenState extends State<UploadScreen> {
               height: 10,
             ),
             Divider(
-              color: AppColor().primary,
+              color: AppColor.primary,
               indent: 20,
               endIndent: 20,
             ),
@@ -140,10 +140,10 @@ class _UploadScreenState extends State<UploadScreen> {
                     hintText: "Enter Your Name...",
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: AppColor().primary)),
+                        borderSide: BorderSide(color: AppColor.primary)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: AppColor().primary)),
+                        borderSide: BorderSide(color: AppColor.primary)),
                   )),
             )
           ],
