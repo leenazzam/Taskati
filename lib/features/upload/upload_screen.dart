@@ -7,7 +7,7 @@ import 'package:taskatii/core/colors.dart';
 import 'package:taskatii/core/functions/navigations.dart';
 import 'package:taskatii/core/textStyle.dart';
 import 'package:taskatii/core/widgets/coustom_botton.dart';
-import 'package:taskatii/features/home/home_screen.dart';
+import 'package:taskatii/features/nav.dart';
 
 class UploadScreen extends StatefulWidget {
   const UploadScreen({super.key});
@@ -32,7 +32,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 userBox.put('name', nameController.text);
                 userBox.put('image', path);
                 userBox.put('isUploaded', true);
-                pushWithRep(context, const HomeScreen());
+                pushWithRep(context, const Nav());
               } else if (path == null) {
                 showDialog(
                     context: context,
